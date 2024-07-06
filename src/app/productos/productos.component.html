@@ -1,0 +1,32 @@
+<h1>Productos</h1>
+<form (ngSubmit)="onSearch()">
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" id="nombre" class="form-control" [(ngModel)]="searchNombre" name="nombre" (input)="onNombreInputChange()">
+  </div>
+  <div class="form-group">
+    <label for="categoriaId">Categoría</label>
+    <select id="categoriaId" class="form-control" [(ngModel)]="searchCategoriaId" name="categoriaId" (change)="onSearch()">
+      <option [value]="0">Todas</option>
+      <option [value]="1">Frutas</option>
+      <option [value]="2">Electrónica</option>
+      <option [value]="3">Ropa</option>
+      <option [value]="4">Juguetes</option>
+      <option [value]="5">Libros</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Buscar</button>
+</form>
+
+<div class="row">
+  <div class="col-md-4" *ngFor="let producto of productosFiltrados">
+    <div class="card mb-4">
+      <img class="card-img-top" [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
+      <div class="card-body">
+        <h5 class="card-title">{{ producto.nombre }}</h5>
+        <p class="card-text">{{ producto.descripcion }}</p>
+        <p class="card-text">{{ producto.precio | currency }}</p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+
+  
+  <div class="jumbotron jumbotron-fluid text-center">
+    <div class="container">
+      <h1 class="display-4">Bienvenido a eCommerce</h1>
+      <p class="lead">Encuentra los mejores productos al mejor precio.</p>
+      <a class="btn btn-primary btn-lg" routerLink="/productos" role="button">Comprar ahora</a>
+    </div>
+  </div>
+  
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Categorías</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let categoria of categorias">
+        <div class="card mb-4">
+          <img class="card-img-top" [src]="categoria.imagenUrl" alt="{{ categoria.nombre }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ categoria.nombre }}</h5>
+            <a class="btn btn-primary" [routerLink]="['/productos']" [queryParams]="{categoriaId: categoria.id}">Ver productos</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="container my-5">
+    <h2 class="text-center mb-4">Productos Destacados</h2>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let producto of productosDestacados">
+        <div class="card mb-4">
+          <img class="card-img-top" [src]="producto.imagenUrl" alt="{{ producto.nombre }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ producto.nombre }}</h5>
+            <p class="card-text">{{ producto.descripcion }}</p>
+            <p class="card-text">{{ producto.precio | currency }}</p>
+            <a class="btn btn-primary" [routerLink]="['/productos', producto.id]">Ver más</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
